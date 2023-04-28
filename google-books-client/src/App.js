@@ -33,7 +33,7 @@ function Form() {
       <button type="submit">Aceptar</button>
       </form>
 
-      {displayText ? <h1>Buscando: {inputText}</h1> : null};
+      {displayText ? <h1>Buscando: {inputText}</h1> : null}
         
       </>
       );
