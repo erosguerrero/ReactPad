@@ -1,25 +1,43 @@
 import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form></Form>
     </div>
   );
+}
+
+function Form() {
+
+    const [inputText, setInputText] = useState("");
+    const [displayText, setDisplayText] = useState(false);
+    const inputTextHandler = (e) => {
+    const value = e.target.value;
+    setDisplayText(false);
+    setInputText(value);
+    };
+    const onSubmit = (e) => {
+    e.preventDefault();
+    setDisplayText(true);
+    };
+
+    return (
+      <>
+      
+      <form onSubmit={onSubmit}>
+      <input type="text"
+      onChange={inputTextHandler}></input>
+      <button type="submit">Aceptar</button>
+      </form>
+
+      {displayText ? <h1>Buscando: {inputText}</h1> : null};
+        
+      </>
+      );
+    
 }
 
 export default App;
