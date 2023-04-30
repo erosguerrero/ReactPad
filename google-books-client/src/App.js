@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import { useState } from "react";
 import './App.css';
 import axios from "axios";
+import Book from "./Book.js"
 
 function App() {
   return (
@@ -53,11 +54,11 @@ function Form() {
           <div className='row form-group my-3'>
             <h2>Buscador de Google books</h2>
           </div>
-        <div class="container d-flex justify-content-center">
+        <div className="container d-flex justify-content-center">
 
-          <div class="input-group col-sm-7  input-group-lg">
+          <div className="input-group col-sm-7  input-group-lg">
                       <div>
-                        <span class="input-group-text bookicon"><img alt="Icono de google books" src="https://img.icons8.com/color/48/000000/google-books.png"></img></span>
+                        <span className="input-group-text bookicon"><img alt="Icono de google books" src="https://img.icons8.com/color/48/000000/google-books.png"></img></span>
                       </div>
               <input 
               className='form-control'
@@ -73,6 +74,15 @@ function Form() {
       </form>
 
       {displayText ? <h1 className='mt-3'>Buscando: {inputText}</h1> : null}
+
+      <div className='centerMainCol'>
+        <div className='bookList'>
+        {/*TODO: leer lista de libros y generar books */}
+          <Book title={"car"} authors={"autores"} imgSrc={"http://books.google.com/books/content?id=adPodg5MNU0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"} />
+          <Book title={"car2"} authors={"autores2"} imgSrc={""} />
+          <Book title={"car3"} authors={""} imgSrc={""} />
+        </div>  
+      </div>
         
   
       </>
