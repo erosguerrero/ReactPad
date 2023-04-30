@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.bookicon{   
+border-bottom-left-radius: 32px !important;
+border-top-left-radius: 32px !important;
+background-color: #fff;
+}
+

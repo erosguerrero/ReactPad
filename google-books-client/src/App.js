@@ -37,7 +37,6 @@ function Form() {
       const maxResults = 5
       const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&key=${key}`;
     
-     
     
       axios.get(url).then((res) => {
           console.log(res.data.items)
@@ -50,25 +49,31 @@ function Form() {
       <>
       
       <form className='container w-50 mt-4' onSubmit={onSubmit}>
-      <div className='row form-group'>
-        <label className='form-label text-start'>Título o autor:</label>
-        <input 
-          className='form-control '
-          type="text"
-          id='titulo'
-          placeholder='Busca un título o autor'
-          onChange={inputTextHandler}>
-        </input>
-      </div>
-      <div className='text-end mt-3'>
-        <button className='btn btn-primary' type="submit">Aceptar</button>
-      </div>
-      
-     </form>
+          <div className='row form-group my-3'>
+            <h1>Buscador de Google books</h1>
+          </div>
+        <div class="container d-flex justify-content-center">
+
+          <div class="input-group col-sm-7  input-group-lg">
+                      <div>
+                        <span class="input-group-text bookicon"><img alt="Icono de google books" src="https://img.icons8.com/color/48/000000/google-books.png"></img></span>
+                      </div>
+              <input 
+              className='form-control'
+              type="text"
+              id='titulo'
+              placeholder='Busca un título o autor'
+              onChange={inputTextHandler}>
+              </input>
+          </div>
+        
+        </div>
+
+      </form>
 
       {displayText ? <h1 className='mt-3'>Buscando: {inputText}</h1> : null}
         
-       
+  
       </>
       );
     
