@@ -40,6 +40,7 @@ function Form() {
     
       axios.get(url).then((res) => {
           console.log(res.data.items)
+          parseJSON(res.data.items[0])
       })
     
     
@@ -79,6 +80,24 @@ function Form() {
     
 }
 
+function parseJSON(json){
+
+  const imageLinks = json.volumeInfo.imageLinks
+  const authors = json.volumeInfo.authors
+
+  let book = {
+    titulo: json.volumeInfo.title,
+    imagen: (imageLinks) ? imageLinks.thumbnail : null,
+    autores: (authors) ? "" : null
+  }
+
+  authors.forEach((e, i) => book.autores += ((i) ? ", " : "") + e)
+
+
+  console.log(book)
+
+
+}
 
 
 
