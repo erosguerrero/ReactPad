@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to left,rgba(247, 61, 123, 0.774), rgba(49, 97, 255, 0.781))
 }
 
 code {
@@ -18,3 +19,24 @@ border-top-left-radius: 32px !important;
 background-color: #fff;
 }
 
+h2 { 
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 32px;
+    margin: 0 0 24px;
+    text-shadow: 2px 2px 2px #181f209f;
+}
+
+.form-control:focus {
+  color: #495057; 
+  background-color: #fff;
+  border-color: #ced4da;
+  outline: 0;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.form-control{
+  border-bottom-right-radius: 32px !important;
+  border-top-right-radius: 32px !important;
+}

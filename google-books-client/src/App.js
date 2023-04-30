@@ -50,7 +50,7 @@ function Form() {
       
       <form className='container w-50 mt-4' onSubmit={onSubmit}>
           <div className='row form-group my-3'>
-            <h1>Buscador de Google books</h1>
+            <h2>Buscador de Google books</h2>
           </div>
         <div class="container d-flex justify-content-center">
 
