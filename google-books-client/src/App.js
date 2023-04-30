@@ -65,7 +65,7 @@ function Form() {
     return (
       <>
       
-      <form className='container w-50 mt-4' onSubmit={onSubmit}>
+      <form className='container searchContainer mt-4' onSubmit={onSubmit}>
           <div className='row form-group my-3'>
             <h2>Buscador de Google books</h2>
           </div>

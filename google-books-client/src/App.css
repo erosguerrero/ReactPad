@@ -43,16 +43,24 @@
   
 }
 
-@media (max-width:740px) {
-  .bookList{
-    width: 90%;
-    
-  }
-}
 
 .centerMainCol
 {
   justify-content: center;
   display: flex;
+}
+
+.searchContainer{
+  width: 50%;
+}
+
+@media (max-width:740px) {
+  .bookList{
+    width: 90%;
+    
+  }
+  .searchContainer{
+    width: 100%;
+  }
 }
 
