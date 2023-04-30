@@ -16,16 +16,17 @@ function Form() {
 
     const [inputText, setInputText] = useState("");
     const [displayText, setDisplayText] = useState(false);
+    const [bookList, setBookList] = useState(null)
+    const [displayBooks, setDisplayBooks] = useState(false)
 
     const inputTextHandler = (e) => {
       const value = e.target.value;
-      setDisplayText(false);
       setInputText(value.trim());
     };
     const onSubmit = (e) => {
       e.preventDefault();
+      setDisplayText(false)
       if (inputText){
-          setDisplayText(true);
           CallApi()
       }
         
@@ -36,12 +37,26 @@ function Form() {
       const key = "AIzaSyDEcNpRNMpVYiZ2Yb2vceISesLDlYBc1ig"
       const query = inputText
       const maxResults = 5
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&key=${key}`;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&printType=BOOKS&key=${key}`;
     
     
       axios.get(url).then((res) => {
-          console.log(res.data.items)
-          parseJSON(res.data.items[0])
+
+          let response = res.data.items
+          console.log(response)
+
+          let books = []
+
+          if (response)
+            books = response.map((e, i) => parseJSON(e, i))
+          else
+            setDisplayText(true)
+
+          console.log(books)
+
+          setBookList(books)
+          setDisplayBooks(true)
+          
       })
     
     
@@ -73,14 +88,16 @@ function Form() {
 
       </form>
 
-      {displayText ? <h1 className='mt-3'>Buscando: {inputText}</h1> : null}
 
       <div className='centerMainCol'>
         <div className='bookList'>
         {/*TODO: leer lista de libros y generar books */}
-          <Book title={"car"} authors={"autores"} imgSrc={"http://books.google.com/books/content?id=adPodg5MNU0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"} />
-          <Book title={"car2"} authors={"autores2"} imgSrc={""} />
-          <Book title={"car3"} authors={""} imgSrc={""} />
+
+          {displayText ? <h1 className='mt-4'>Sin resultados</h1> : null}
+          {displayBooks ?
+          bookList.map(e => <Book key={e.id} title={e.titulo} authors={e.autores} imgSrc={e.imagen} preview={e.preview}></Book>)
+          : null}
+          
         </div>  
       </div>
         
@@ -90,21 +107,24 @@ function Form() {
     
 }
 
-function parseJSON(json){
+function parseJSON(json, id){
 
   const imageLinks = json.volumeInfo.imageLinks
   const authors = json.volumeInfo.authors
 
   let book = {
+    id: id,
     titulo: json.volumeInfo.title,
     imagen: (imageLinks) ? imageLinks.thumbnail : null,
-    autores: (authors) ? "" : null
+    autores: (authors) ? "" : null,
+    preview: json.volumeInfo.previewLink
   }
 
-  authors.forEach((e, i) => book.autores += ((i) ? ", " : "") + e)
+  if (authors)
+    authors.forEach((e, i) => book.autores += ((i) ? ", " : "") + e)
 
 
-  console.log(book)
+  return book
 
 
 }

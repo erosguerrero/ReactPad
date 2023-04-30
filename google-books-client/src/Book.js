@@ -31,8 +31,13 @@ function Book(props) {
     authors = "Autor anónimo"
 
 
+  const onClick = (e) => {
+      e.preventDefault()
+      window.location.href = props.preview
+  }
 
-   return <div className="bookContainer row">
+
+   return <div className="bookContainer row" onClick={onClick}>
     <img className={classImg} src={imgSrc}></img>
     <div className='col row colTextBook'>
         <div className='row titleBook'>{title}</div>
