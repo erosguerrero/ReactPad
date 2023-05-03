@@ -46,5 +46,9 @@
         margin-left: 0;
      
     }
+
+    .imgBook{
+        aspect-ratio : 1;
+    }
     
   }

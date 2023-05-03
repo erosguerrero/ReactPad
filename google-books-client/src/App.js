@@ -46,9 +46,9 @@ function Form() {
     useEffect(() => {
       
       var toParse = localStorage.getItem("lastSearch")
-      if(toParse!=null)
+      if(toParse)
       {
-        lastSearch = JSON.parse()
+        lastSearch = JSON.parse(toParse)
         let lastSearchJson = [];
   
         lastSearch.forEach(element => {
