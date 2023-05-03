@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logoBooks from './google-books.png';
 import { useState } from "react";
 import './App.css';
 import axios from "axios";
@@ -73,7 +73,7 @@ function Form() {
 
           <div className="input-group col-sm-7  input-group-lg">
                       <div>
-                        <span className="input-group-text bookicon"><img alt="Icono de google books" src="https://img.icons8.com/color/48/000000/google-books.png"></img></span>
+                        <span className="input-group-text bookicon"><img alt="Icono de google books" src = {logoBooks} ></img></span>
                       </div>
               <input 
               className='form-control'
