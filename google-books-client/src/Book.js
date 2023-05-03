@@ -22,12 +22,12 @@ function Book(props) {
     classImg="imgBook col-2"
   }
 
-  if(imgSrc == null || imgSrc=="")
+  if(imgSrc == null || imgSrc==="")
   {
     imgSrc = noBook
   }
 
-  if(authors== null || authors=="")
+  if(authors== null || authors==="")
     authors = "Autor anónimo"
 
 

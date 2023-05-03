@@ -1,10 +1,21 @@
 import logoBooks from './google-books.png';
 import { useState } from "react";
+import { useEffect } from "react";
 import './App.css';
 import axios from "axios";
 import Book from "./Book.js"
+//import {useNetInfo} from "@react-native-community/netinfo"
+//import NetInfo from "react-native"
 
 function App() {
+  //const netInfo = useNetInfo();
+
+  //leer de local storage.
+  //cargar ultimos libros
+
+  
+
+
   return (
     <div className="App">
       <Form></Form>
@@ -14,10 +25,42 @@ function App() {
 
 function Form() {
 
+
+  var lastSearch
+
+
+
+
+  console.log("nuevo:" +lastSearch)
+  
+
+
+  
     const [inputText, setInputText] = useState("");
     const [displayText, setDisplayText] = useState(false);
     const [bookList, setBookList] = useState(null)
     const [displayBooks, setDisplayBooks] = useState(false)
+
+
+    //setBookList(lastSearch)
+    useEffect(() => {
+      
+      var toParse = localStorage.getItem("lastSearch")
+      if(toParse!=null)
+      {
+        lastSearch = JSON.parse()
+        let lastSearchJson = [];
+  
+        lastSearch.forEach(element => {
+          console.log(element)
+        });
+   
+        setBookList(lastSearch)
+        setDisplayBooks(true)
+
+      }
+     
+    }, [])
 
     const inputTextHandler = (e) => {
       const value = e.target.value;
@@ -52,12 +95,19 @@ function Form() {
           else
             setDisplayText(true)
 
-          console.log(books)
+          //console.log(books)
 
           setBookList(books)
           setDisplayBooks(true)
+
+          localStorage.setItem("lastSearch", JSON.stringify(books))
           
-      })
+      }).catch(error => {
+        alert("No hay conexion a internet.\nNo se pueden buscar nuevos libros")
+      });
+
+
+      
     
     
     }
