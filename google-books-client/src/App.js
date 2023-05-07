@@ -40,6 +40,7 @@ function Form() {
     const [displayText, setDisplayText] = useState(false);
     const [bookList, setBookList] = useState(null)
     const [displayBooks, setDisplayBooks] = useState(false)
+    const [inputAuthor, setInputAuthor] = useState("")
 
 
     //setBookList(lastSearch)
@@ -66,10 +67,16 @@ function Form() {
       const value = e.target.value;
       setInputText(value.trim());
     };
+
+    const inputAuthorHandler = (e) => {
+      const value = e.target.value;
+      setInputAuthor(value.trim())
+    }
+
     const onSubmit = (e) => {
       e.preventDefault();
       setDisplayText(false)
-      if (inputText){
+      if (inputText || inputAuthor){
           CallApi()
       }
         
@@ -78,11 +85,15 @@ function Form() {
     function CallApi(){
 
       const key = "AIzaSyDEcNpRNMpVYiZ2Yb2vceISesLDlYBc1ig"
-      const query = inputText
+      let title = (inputText) ? "intitle:" + inputText : ""
+      let author = (inputAuthor) ? "inauthor:" + inputAuthor : ""
+
       const maxResults = 5
-      const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&printType=BOOKS&key=${key}`;
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${title + " " + author}&maxResults=${maxResults}&printType=BOOKS&key=${key}`;
     
     
+      console.log(url)
+
       axios.get(url).then((res) => {
 
           let response = res.data.items
@@ -114,20 +125,19 @@ function Form() {
 
     return (
       <>
-      
       <form className='container searchContainer mt-4' onSubmit={onSubmit}>
           <div className='row form-group my-3'>
             <h2>Buscador de Google books</h2>
           </div>
         <div className="container d-flex justify-content-center">
-      
           <div className="input-group col-sm-7  input-group-lg">
-                      <div>
-                        <span className="input-group-text bookicon"><img alt="Icono de google books" src = {logoBooks} ></img></span>
-                      </div>
+                <div>
+                  <span className="input-group-text bookicon"><img alt="Icono de google books" src = {logoBooks} ></img></span>
+                </div>
               <input 
               className='form-control'
               type="text"
+              name='titulo'
               id='titulo'
               placeholder='Busca un título'
               onChange={inputTextHandler}>
@@ -136,7 +146,6 @@ function Form() {
         
         </div>
         <div className="container d-flex justify-content-center">
-      
           <div className="input-group col-sm-7  input-group-lg">
                       <div>
                         <span className="input-group-text bookicon"><img alt="Icono de google books" src = {logoBooks} ></img></span>
@@ -144,14 +153,14 @@ function Form() {
               <input 
               className='form-control'
               type="text"
+              name='autor'
               id='autor'
               placeholder='Busca un autor'
-              onChange={inputTextHandler}>
+              onChange={inputAuthorHandler}>
               </input>
           </div>
-        
         </div>
-
+        <button className='btn btn-primary' type='submit'>Enviar</button>
       </form>
 
 
