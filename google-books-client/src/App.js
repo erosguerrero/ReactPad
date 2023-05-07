@@ -120,7 +120,7 @@ function Form() {
             <h2>Buscador de Google books</h2>
           </div>
         <div className="container d-flex justify-content-center">
-
+      
           <div className="input-group col-sm-7  input-group-lg">
                       <div>
                         <span className="input-group-text bookicon"><img alt="Icono de google books" src = {logoBooks} ></img></span>
@@ -129,7 +129,23 @@ function Form() {
               className='form-control'
               type="text"
               id='titulo'
-              placeholder='Busca un título o autor'
+              placeholder='Busca un título'
+              onChange={inputTextHandler}>
+              </input>
+          </div>
+        
+        </div>
+        <div className="container d-flex justify-content-center">
+      
+          <div className="input-group col-sm-7  input-group-lg">
+                      <div>
+                        <span className="input-group-text bookicon"><img alt="Icono de google books" src = {logoBooks} ></img></span>
+                      </div>
+              <input 
+              className='form-control'
+              type="text"
+              id='autor'
+              placeholder='Busca un autor'
               onChange={inputTextHandler}>
               </input>
           </div>
