@@ -58,6 +58,13 @@
   margin-top: 1em;
 }
 
+.btn-primary{
+  margin-top: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-size: large;
+}
+
 @media (max-width:740px) {
   .bookList{
     width: 90%;

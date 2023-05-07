@@ -88,7 +88,7 @@ function Form() {
       let title = (inputText) ? "intitle:" + inputText : ""
       let author = (inputAuthor) ? "inauthor:" + inputAuthor : ""
 
-      const maxResults = 5
+      const maxResults = 20
       const url = `https://www.googleapis.com/books/v1/volumes?q=${title + " " + author}&maxResults=${maxResults}&printType=BOOKS&key=${key}`;
     
     
@@ -160,7 +160,7 @@ function Form() {
               </input>
           </div>
         </div>
-        <button className='btn btn-primary' type='submit'>Enviar</button>
+        <button className='btn btn-primary' type='submit'>Buscar</button>
       </form>
 
 
