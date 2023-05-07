@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ReactPad/static/css/main.afce40da.css",
-    "main.js": "/ReactPad/static/js/main.6adb17bc.js",
+    "main.css": "/ReactPad/static/css/main.0e9e5294.css",
+    "main.js": "/ReactPad/static/js/main.1ee06382.js",
     "index.html": "/ReactPad/index.html",
-    "main.afce40da.css.map": "/ReactPad/static/css/main.afce40da.css.map",
-    "main.6adb17bc.js.map": "/ReactPad/static/js/main.6adb17bc.js.map"
+    "main.0e9e5294.css.map": "/ReactPad/static/css/main.0e9e5294.css.map",
+    "main.1ee06382.js.map": "/ReactPad/static/js/main.1ee06382.js.map"
   },
   "entrypoints": [
-    "static/css/main.afce40da.css",
-    "static/js/main.6adb17bc.js"
+    "static/css/main.0e9e5294.css",
+    "static/js/main.1ee06382.js"
   ]
 }
